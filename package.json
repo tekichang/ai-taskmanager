@@ -1,0 +1,19 @@
+{
+  "name": "ai-task-manager",
+  "version": "1.0.0",
+  "description": "An AI-powered task manager to help users create, organize, and prioritize tasks.",
+  "scripts": {
+    "backend": "cd src/backend && bun dev",
+    "frontend": "cd src/frontend && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "bun",
+    "express",
+    "supabase",
+    "ai"
+  ],
+  "author": "",
+  "license": "ISC"
+}

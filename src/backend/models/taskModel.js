@@ -1,12 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
+const getClient = (token) => createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
+  process.env.SUPABASE_KEY,
+  { global: { headers: { Authorization: `Bearer ${token}` } } }
 );
 
-export const findAll = async (userId) => {
-  const { data, error } = await supabase
+export const findAll = async (userId, token) => {
+  const { data, error } = await getClient(token)
     .from('tasks')
     .select('*')
     .eq('user_id', userId)
@@ -15,8 +16,8 @@ export const findAll = async (userId) => {
   return data;
 };
 
-export const create = async (taskData) => {
-  const { data, error } = await supabase
+export const create = async (taskData, token) => {
+  const { data, error } = await getClient(token)
     .from('tasks')
     .insert([taskData])
     .select()
@@ -25,8 +26,8 @@ export const create = async (taskData) => {
   return data;
 };
 
-export const update = async (id, updateData) => {
-  const { data, error } = await supabase
+export const update = async (id, updateData, token) => {
+  const { data, error } = await getClient(token)
     .from('tasks')
     .update(updateData)
     .eq('id', id)
@@ -36,8 +37,8 @@ export const update = async (id, updateData) => {
   return data;
 };
 
-export const remove = async (id) => {
-  const { error } = await supabase
+export const remove = async (id, token) => {
+  const { error } = await getClient(token)
     .from('tasks')
     .delete()
     .eq('id', id);

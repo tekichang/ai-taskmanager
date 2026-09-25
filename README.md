@@ -38,7 +38,7 @@ This project uses a **single-call LLM integration** pattern — the simplest and
 3. That data is stored alongside the task in Supabase
 
 ### Model
-`llama-3.1-8b-instant` via Groq's free API tier. Groq was chosen over Gemini/OpenAI due to regional availability and free tier access.
+`llama-3.1-8b-instant` via Groq's free API tier. 
 
 ### Prompt strategy
 The system prompt instructs the model to return only valid JSON with no markdown or explanation. The temperature is set to `0.1` to reduce variability in outputs.
